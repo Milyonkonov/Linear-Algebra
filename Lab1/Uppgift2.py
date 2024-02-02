@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 # Kräver en normal (n) till planet eftersom formeln använder planets normalform.
 def planeZ(n, x, y):
     return (-n[0]*x - n[1]*y) / n[2] # Planet på normalform, men med z utlöst
-        # z = (-Ax - Bx) / C   (för plan genom origo)
+    # z =  (-Ax - Bx) / C {för plan genom origo}
 
 # En funktion som tar en punkt och en normal till planet, 
 # och returnerar punkten projicerad på planet (eller vektorn från origo till projicerad punkt). 
@@ -21,8 +21,8 @@ def projectionOfPoint(p, n):
 # --- Förbered figuren ---
 fig = plt.figure()
 ax = fig.add_subplot(projection='3d')
-x = np.linspace(-10, 10, 10)
-y = np.linspace(-10, 10, 10)
+x = np.linspace(-5, 5, 10)
+y = np.linspace(-5, 5, 10)
 X, Y = np.meshgrid(x, y) # X- och Y-värden som används med planeZ för att beskriva planet.
 # ------------------------
 
@@ -43,32 +43,45 @@ def deluppgiftb():
 
     ax.plot_surface(X, Y, planeZ(normal1, X, Y), color='red', alpha=0.5) #Rita ut planet
     ax.plot_surface(X, Y, planeZ(normal2, X, Y), color='red', alpha=0.5) #Rita ut planet med -v
+
     plotPoint(point, "blue")              # Rita ut den (oprojicerade) punkten.
+
     t = projectionOfPoint(point, normal1) # Beräkna projektionen av punkten på första planet.
     plotPoint(t, "green")                 # Rita ut den första projicerade punkten.
+
     t = projectionOfPoint(point, normal2) # Beräkna projektionen av punkten på andra planet.
     plotPoint(t, "red")                   # Rita ut den andra projicerade punkten.
 
     # Den gröna punkten visas inte eftersom den röda ritas över den.
     # Kryssprodukten resulterar bara i samma normal med motsatt riktning när -v används ...
     # som också beskriver samma plan. Båda projicerade punkter är likadana.
+    # Även de två planen är lika.
 
 def deluppgiftc():
     # --- Variabler ---
-    point = [np.pi, np.e, 1]
-    normal1 = np.array([1, 1, 1]) # Gör "listorna" till vektorer
-    normal2 = np.array([3, 3, 3])
-    np.vectorize(normal1, normal2)
+    point = np.array([np.pi, np.e, 1])
+    normal1 = np.array([1, 1, 1]) # Gör "listorna" till vektorer,
+    normal2 = np.array([3, 3, 3]) # så de kan multipliceras med skalär
     # -----------------
 
-    ax.plot_surface(X, Y, planeZ(normal1, X, Y), color='red', alpha=0.5) #Rita ut första planet
-    ax.plot_surface(X, Y, planeZ(normal1, X, Y), color='blue', alpha=0.5) #Rita ut andra planet
-    plotPoint(point, "blue")              # Rita ut den (oprojicerade) punkten.
-    t = projectionOfPoint(point, normal1) # Beräkna projektionen av punkten på första planet.
-    plotPoint(t, "green")                 # Rita ut den första projicerade punkten.
-    t = projectionOfPoint(point, normal2) # Beräkna projektionen av punkten på andra planet.
-    plotPoint(t, "red")                   # Rita ut den andra projicerade punkten.
+    ax.set_box_aspect([1, 1, 2]) # Gör att rutorna i diagramet får mer liknande sidolängd
 
-#deluppgiftb() # 2b) avkommentera för att köra
-deluppgiftc()
-plt.show() # Visa rummet
+    ax.plot_surface(X, Y, planeZ(normal1, X, Y), color='red', alpha=0.5) #Rita ut första planet
+    ax.plot_surface(X, Y, planeZ(normal2, X, Y), color='blue', alpha=0.5) #Rita ut andra planet
+
+    plotPoint(point, "green")               # Rita ut den (oprojicerade) punkten.
+
+    t = projectionOfPoint(point, normal1)   # Beräkna projektionen av punkten på första planet.
+    plotPoint(t, "red")                     # Rita ut den första projicerade punkten.
+
+    t = projectionOfPoint(point, normal2)   # Beräkna projektionen av punkten på andra planet.
+    plotPoint(t, "blue")                    # Rita ut den andra projicerade punkten.
+
+    # Eftersom [1, 1, 1] och [3, 3, 3] har samma riktning beskriver de samma plan.
+    # Beviserligen: x + y + z = 0 <=> 3*(x + y + z) = 0
+    # Det andra planet ritar över det första, vi ser bara ett plan (men lila=röd+blå).
+    # Den andra punkten ritar över den första, vi ser bara en punkt.
+
+#deluppgiftb()  # 2b) avkommentera för att köra
+deluppgiftc()   # 2c)
+plt.show()      # Visa rummet
