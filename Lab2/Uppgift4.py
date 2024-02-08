@@ -1,9 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-ex = np.array([[1], [0]])
-egg = np.array([[0.58], [-0.82]])
-
+#-----Definitioner-----
 A1 = np.array([[0, 0],
                [0, 0.16]])
 
@@ -24,19 +22,10 @@ b3 = np.array([[0], [1.6]])
 b4 = np.array([[0], [0.44]])
 
 b_translations = [b1, b2, b3, b4]
+#----------------------
 
-def nVector(n, v0, a_matrix, translation):
-    vn = v0
-    for i in range(1, n+1):
-        vn = a_matrix@vn + translation
-    
-    return vn
-
-def prettyColor ():
-    for i in range (0, 1000):
-        testVector = nVectorRandom(i, egg)
-        plt.scatter(testVector[0], testVector[1])
-
+#-----funktioner-----
+# Returnerar ett slumpmässigt index f.o.m. 0 t.o.m. 3 med olika sannolikhet
 def generateIndex ():
     r = np.random.rand(1)[0]
     if (r < 0.01):
@@ -50,13 +39,21 @@ def generateIndex ():
     else:
         return 0
 
+# Returnerar vn där { n = 0 => vn = v0 & n > 0 => vn = Av(n-1) + b } där A och b tillhör någon av 4 affina avbildningar.
 def nVectorRandom(n, v0):
     vn = v0
-    for i in range(1, n+1):
-        index = generateIndex()
-        vn = A_matrices[index]@vn + b_translations[index]
-    
-    return vn
+    for i in range(1, n+1):         # Vi vill börja på index 1, men n=1 ska ändå köra loopen 1 gång, därför: range(1, n+1)
+        index = generateIndex()     # Generera ett index som väljer en av de fyra affina avbildningarna.
+        vn = A_matrices[index]@vn + b_translations[index]   # vi = A*v(i-1) + b     (Men där A och b är slumpmässigt valt av möjliga.)
+    return vn   # vn innehåller inte den n:te vektorn förrän sista steget i loopen är utfört, men aja.
+#--------------------
 
-prettyColor()
+#-----Huvudkod-----
+someVector = np.array([[1],[0]]) # Det visar sig att ursprungsvektorn inte spelar så stor roll för höga iterationer...
+
+# En loop som ritar alla vektorer v0 till vn på figuren, där vi valt n=800 (extremt oeffektivt)
+for i in range (0, 800):
+    testVector = nVectorRandom(i, someVector)
+    plt.scatter(testVector[0], testVector[1])
 plt.show()
+#------------------
