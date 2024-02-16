@@ -1,0 +1,62 @@
+4a)
+    Lösningen kan vara en linje eller ett plan,
+    men i specialfall hela rummet eller saknad lösning.
+    
+    Två ekvationer, vardera för ett plan på normalform. 
+    När normalerna är lika med varandra kommer samma plan att beskrivas i och med samma
+    A-, B- och C-koefficient. Men planen kan fortfarande ha olika förskjutning i och med 
+    D-konstanterna (som inte är en komponent i någon normalvektorerna).
+    Alltså kommer de två planen vara parallella och antingen aldriga skära varandra;
+        ingen lösning.
+    eller alltid skära varandra då de aldrig "viker ifrån varandra"
+        lösningen är ett plan som är lika med de båda planen.
+    
+    Men ett plan har alltid två normalvektorer och exakt samma fall skulle uppträda om ett
+    utav planen skulle ha den motsatta normalen till det andra planet och samma D-koefficient.
+    
+    Ett speciellt fall uppstår då ett av planens normalvektor är nollvektorn. Då skulle
+    koefficienterna alla bli noll, bara D konstanten skulle kunna vara skilt från noll.
+    Då återstår bara ekvationen D = 0 som ju inte påverkas av x, y eller z.
+    Alltså gäller ekvationen för antingen alla punkter eller ingen punkt.
+    Om D är nollskilt kommer ekvationen aldrig att gälla oavsett vad och
+    ekvationensystemet saknar då lösning.
+    Om D faktiskt är noll gäller ekvationen för alla punkter, dvs rummet.
+    Ekvationensystemet gäller alltså då den andra ekvationen skär rummet,
+    helt enkelt är lösningen samma som den andra ekvationen.
+    Ännu mer speciellt fall uppstår då båda ekvationerna har "nollvektorn som normal",
+    då är lösningen när rummet skär rummet, helt enkelt bara rummet.
+
+    Annars i fallet att planen inte är parallella skulle de skära varandra i en linje.
+
+4b)
+    Om det finns en ekvation med alla koefficienter som noll och D-konstanten är nollskild
+    saknas en lösning till ekvationensystemet eftersom ekvationen i fråga aldrig gäller.
+    
+    Egentligen är detta ekvationensystemet det samma som i 4a men med ännu ett villkor,
+    att lösningen till ekvationensystemet i 4a ska "skära" en tredje ekvationen.
+
+    Vi vet att lösningen till 4a var en linje, ett plan, rummet eller helt saknad.
+
+    Den tredje ekvationen är återigen formeln för ett plan på normalform.
+    (Denna har lösningsmängden av oftast ett plan,
+    annars rummet eller saknad lösning som diskuterat i uppgift 4a)
+
+    1. När den tredje ekvationen saknar lösning saknar ekvationsystemet lösning.
+
+    2. När den tredje ekvationen är rummet är lösningen för 4b samma som 4a. Det kan vara...
+        - Rummet
+        - ett plan
+        - en linje
+        - saknad lösning
+
+    3. När den tredje ekvationen är ett plan kan skärningen av 4a vara...
+        - ett plan, då 4a är rummet eller beskriver samma plan som den tredje ekvationen.
+        - en linje, då 4a och den tredje ekvationen beksriver oparallella plan.
+        - Saknad lösning, då 4a saknar lösning, eller beskriver ett plan som är parallellt
+        med planet av den tredje ekvationen men med annan förskjutning.
+    
+    SVAR
+    Om vi inte har missat något fall är då lösningsmängden till 4b:
+        - Rummet
+        - Ett plan
+        - En linje
