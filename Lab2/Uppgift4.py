@@ -49,7 +49,7 @@ def nVectorRandom(n, v0):
 #--------------------
 
 #-----Huvudkod-----
-someVector = np.array([[1],[0]]) # Det visar sig att ursprungsvektorn inte spelar så stor roll för höga iterationer...
+someVector = np.array([[1],[1]]) # Det visar sig att ursprungsvektorn inte spelar så stor roll för höga iterationer...
 
 # En loop som ritar alla vektorer v0 till vn på figuren, där vi valt n=800 (extremt oeffektivt)
 for i in range (0, 800):
