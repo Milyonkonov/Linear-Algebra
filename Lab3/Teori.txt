@@ -60,3 +60,18 @@
         - Rummet
         - Ett plan
         - En linje
+
+    KOMPLETTERING
+
+En systematisk metod för att veta lösningsmängden av ett ekvationssystem är att först
+ betrakta systemets totalmatris på reducerad trappstegsform.
+
+Om det finns ett pivotelement i sista raden i sista kolumnen saknar ekvationssystemet lösning. Alla koefficienter är noll för denna ekvation men konstanten D skulle vara nollskilt, vilket är en motsägelse.
+
+Om det inte finns några fria kolumner har ekvationsystemet en unik lösning, alltså en punkt. Varje pivotelement (1) kommer multipliceras med en viss komponent i lösningsvektorn x och varje rad kommer beskriva en ekvation: komponent i av x = komponent i av b (högerledsvektorn/sista kolumnen i totalmatrisen). Detta innebär att varje komponent av lösningsvektorn är ovarierande och lösningen är således en fix punkt.
+
+Om det finns fria kolumner i totalmatrisen kommer den korresponderande komponenten i lösningsvektorn x att ansättas till en parametervariabel, och kolumnen i fråga tolkas som en riktningsvektor. Lösningsvektorn x blir då en linjärkombination av... 
+* Den fixerade vektorn där varje komponent i = komponent i av "högerledsvektorn" om kolumn i är pivotkolumn (analogt med föregående stycke), samt...
+* en eller flera vektorer multiplicerad med var sin unik parameter, där varje vektor är en fri kolumn i totalmatrisen (kolumnvektor).
+
+Alltså blir lösningsmängden spannet av alla vektorer med parameter i fallet att minst en finns. Koefficientmatrisen är 3x3 för 4b) vilket betyder maximalt 3 fria kolumner (nollvektorn)
